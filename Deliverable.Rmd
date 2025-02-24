@@ -11,32 +11,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-
+  text
 
 ```{r iris}
-<<<<<<< HEAD
 iris_data <- read.csv("iris.csv")
 summary(iris_data)
-=======
-captures <- read.csv("iris.csv")
-summary(iris)
->>>>>>> 230f7644831639ea12e10b269ceef44bfccbfc48
 ```
 
 ## Plots
-Plots of sepal width against length and petal width against length (accordingly).
+
+  Plots of sepal width against length and petal width against length (accordingly).
 
 ```{r iris_data, echo=FALSE}
 plot(x = iris_data$Sepal.Length, y = iris_data$Sepal.Width, main = "Sepal Length by Width", xlim = c(4,8.5), ylim = c(1.5,5), xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)")
 
-<<<<<<< HEAD
 plot(x = iris_data$Petal.Length, y = iris_data$Petal.Width, main = "Petal Length by Width", xlim = c(0,8), ylim = c(0,3), xlab = "Petal Length (mm)", ylab = "Petal Width (mm)")
-=======
-```{r iris, echo=FALSE}
-plot(x = iris$Sepal.Length, y = iris$Sepal.Width, main = "Sepal Length by Width", xlim = c(4,8.5), ylim = c(1.5,5), xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)")
-
-plot(x = iris$Petal.Length, y = iris$Petal.Width, main = "Petal Length by Width", xlim = c(0,8), ylim = c(0,3), xlab = "Petal Length (mm)", ylab = "Petal Width (mm)")
->>>>>>> 230f7644831639ea12e10b269ceef44bfccbfc48
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
