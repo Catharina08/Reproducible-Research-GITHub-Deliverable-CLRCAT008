@@ -24,9 +24,10 @@ summary(iris)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r iris, echo=FALSE}
+plot(x = iris$Sepal.Length, y = iris$Sepal.Width, main = "Sepal Length by Width", xlim = c(4,8.5), ylim = c(1.5,5), xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)")
+
+plot(x = iris$Petal.Length, y = iris$Petal.Width, main = "Petal Length by Width", xlim = c(0,8), ylim = c(0,3), xlab = "Petal Length (mm)", ylab = "Petal Width (mm)")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
