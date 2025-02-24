@@ -11,23 +11,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r iris}
-captures <- read.csv("iris.csv")
-summary(iris)
+iris_data <- read.csv("iris.csv")
+summary(iris_data)
 ```
 
-## Including Plots
+## Plots
 
-You can also embed plots, for example:
 
-```{r iris, echo=FALSE}
-plot(x = iris$Sepal.Length, y = iris$Sepal.Width, main = "Sepal Length by Width", xlim = c(4,8.5), ylim = c(1.5,5), xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)")
+```{r iris_data, echo=FALSE}
+plot(x = iris_data$Sepal.Length, y = iris_data$Sepal.Width, main = "Sepal Length by Width", xlim = c(4,8.5), ylim = c(1.5,5), xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)")
 
-plot(x = iris$Petal.Length, y = iris$Petal.Width, main = "Petal Length by Width", xlim = c(0,8), ylim = c(0,3), xlab = "Petal Length (mm)", ylab = "Petal Width (mm)")
+plot(x = iris_data$Petal.Length, y = iris_data$Petal.Width, main = "Petal Length by Width", xlim = c(0,8), ylim = c(0,3), xlab = "Petal Length (mm)", ylab = "Petal Width (mm)")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
