@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-
+  text
 
 ```{r iris}
 iris_data <- read.csv("iris.csv")
@@ -19,7 +19,8 @@ summary(iris_data)
 ```
 
 ## Plots
-Plots of sepal width against length and petal width against length (accordingly).
+
+  Plots of sepal width against length and petal width against length (accordingly).
 
 ```{r iris_data, echo=FALSE}
 plot(x = iris_data$Sepal.Length, y = iris_data$Sepal.Width, main = "Sepal Length by Width", xlim = c(4,8.5), ylim = c(1.5,5), xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)")
