@@ -11,11 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-  text
+text...
 
 ```{r iris}
 iris_data <- read.csv("iris.csv")
 summary(iris_data)
+View(iris_data)
 ```
 
 ## Plots
