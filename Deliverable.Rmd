@@ -15,8 +15,8 @@ text...
 
 ```{r iris}
 iris_data <- read.csv("iris.csv")
-summary(iris_data)
 View(iris_data)
+summary(iris_data)
 ```
 
 ## Plots
@@ -24,9 +24,7 @@ View(iris_data)
   Plots of sepal width against length and petal width against length (accordingly).
 
 ```{r iris_data, echo=FALSE}
-plot(x = iris_data$Sepal.Length, y = iris_data$Sepal.Width, main = "Sepal Length by Width", xlim = c(4,8.5), ylim = c(1.5,5), xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)")
+plot(Sepal.Width~Sepal.Length, data = iris_data, main = "Sepal Length and Width of Iris Flowers", xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)", pch = 19, cex = 0.5)
 
-plot(x = iris_data$Petal.Length, y = iris_data$Petal.Width, main = "Petal Length by Width", xlim = c(0,8), ylim = c(0,3), xlab = "Petal Length (mm)", ylab = "Petal Width (mm)")
+plot(Petal.Width~Petal.Length, data = iris_data, main = "Petal Length and Width of Iris Flowers", xlab = "Petal Length (mm)", ylab = "Petal Width (mm)", pch = 19, cex = 0.5)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
