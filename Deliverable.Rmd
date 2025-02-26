@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 text...
 
 ```{r iris}
-iris_data <- read.csv("/Users/catharinaclark/GIT/Reproducible-Research-GITHub-Deliverable-CLRCAT008/iris.csv")
+iris_data <- read.csv("iris.csv")
 View(iris_data)
 summary(iris_data)
 iris_data$Species <- as.factor(iris_data$Species)
