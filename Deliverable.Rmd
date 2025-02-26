@@ -14,9 +14,10 @@ knitr::opts_chunk$set(echo = TRUE)
 text...
 
 ```{r iris}
-iris_data <- read.csv("iris.csv")
+iris_data <- read.csv("/Users/catharinaclark/GIT/Reproducible-Research-GITHub-Deliverable-CLRCAT008/iris.csv")
 View(iris_data)
 summary(iris_data)
+iris_data$Species <- as.factor(iris_data$Species)
 ```
 
 ## Plots
@@ -24,7 +25,7 @@ summary(iris_data)
   Plots of sepal width against length and petal width against length (accordingly).
 
 ```{r iris_data, echo=FALSE}
-plot(Sepal.Width~Sepal.Length, data = iris_data, main = "Sepal Length and Width of Iris Flowers", xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)", pch = 19, cex = 0.5)
+plot(Sepal.Width~Sepal.Length, data = iris_data, main = "Sepal Length and Width of Iris Flowers", xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)", pch = 19, cex = 0.5, col = as.numeric(iris_data$Species))
 
-plot(Petal.Width~Petal.Length, data = iris_data, main = "Petal Length and Width of Iris Flowers", xlab = "Petal Length (mm)", ylab = "Petal Width (mm)", pch = 19, cex = 0.5)
+plot(Petal.Width~Petal.Length, data = iris_data, main = "Petal Length and Width of Iris Flowers", xlab = "Petal Length (mm)", ylab = "Petal Width (mm)", pch = 19, cex = 0.5, col = as.numeric(iris_data$Species))
 ```
