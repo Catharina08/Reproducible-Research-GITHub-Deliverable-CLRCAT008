@@ -9,21 +9,67 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Packages and dataset
 
-```{r iris}
-iris_data <- read.csv("iris.csv")
-View(iris_data)
-summary(iris_data)
-iris_data$Species <- as.factor(iris_data$Species)
+```{r Project}
+
+library(rmarkdown)
+library(readxl)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+
+
+small_mammal_data <- read_xlsx("Renosterveld_Sherman trap data_Cat.xlsx")
+
+head(small_mammal_data)
+
+View(small_mammal_data)
+summary(small_mammal_data)
+
+```
+## Selection of Columns for Analysis and Use
+
+```{r}
+
+alt_data <- small_mammal_data %>% select(`Trap station`, Species)
+class(alt_data$`Trap station`)
+
+```
+
+## Convert Trap Station to a Factor
+
+```{r}
+
+alt_data$`Trap station`<-as.factor(alt_data$`Trap station`)
+class(alt_data$`Trap station`)
+
+```
+## New Table of Data
+
+```{r}
+
+unique_counts_df <- small_mammal_data %>%
+  count(`Trap station`)
+
+print(unique_counts_df)
+
+
 ```
 
 ## Plots
 
-  Plots of sepal width against length and petal width against length (accordingly).
+```{r small_mammal_data, echo=FALSE}
 
-```{r iris_data, echo=FALSE}
-plot(Sepal.Width~Sepal.Length, data = iris_data, main = "Sepal Length and Width of Iris Flowers", xlab = "Sepal Length (mm)", ylab = "Sepal Width (mm)", pch = 19, cex = 0.5, col = as.numeric(iris_data$Species))
+ggplot(small_mammal_data, aes(x = `Trap Station`, y = `Species Count`)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() + 
+  labs(title = "Bar Plot of Species Counted per Trap Station", x = "Trap Station", y = "Species Count")
 
-plot(Petal.Width~Petal.Length, data = iris_data, main = "Petal Length and Width of Iris Flowers", xlab = "Petal Length (mm)", ylab = "Petal Width (mm)", pch = 19, cex = 0.5, col = as.numeric(iris_data$Species))
+ggplot(small_mammal_data, aes(x = `Trap Station`, y = `Species Percentage`)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() + 
+  labs(title = "Bar Plot of Species Percentage per Trap Station", x = "Trap Station", y = "Species Percentage")
+
 ```
+
