@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Packages and dataset
+## Packages and Dataset
 
 ```{r Project}
 
@@ -19,14 +19,11 @@ library(ggplot2)
 library(tidyverse)
 library(dplyr)
 
-
 small_mammal_data <- read_xlsx("Renosterveld_Sherman trap data_Cat.xlsx")
 
 head(small_mammal_data)
-
-View(small_mammal_data)
+view(small_mammal_data)
 summary(small_mammal_data)
-
 ```
 ## Selection of Columns for Analysis and Use
 
@@ -41,19 +38,27 @@ class(alt_data$`Trap station`)
 
 ```{r}
 
-alt_data$`Trap station`<-as.factor(alt_data$`Trap station`)
+alt_data$`Trap station` <- as.factor(alt_data$`Trap station`)
 class(alt_data$`Trap station`)
 
+view(alt_data)
+
 ```
-## New Table of Data
+## New Table of Data (Made Tidy)
 
 ```{r}
 
-unique_counts_df <- small_mammal_data %>%
+unique_counts_data <- small_mammal_data %>%
   count(`Trap station`)
 
-print(unique_counts_df)
+print(unique_counts_data)
 
+total_captures <- sum(unique_counts_data$n)
+
+unique_counts_data <- unique_counts_data%>%
+  mutate(`Captures Percentages` = round((n / total_captures)*100,2))
+
+view(unique_counts_data)
 
 ```
 
@@ -61,15 +66,13 @@ print(unique_counts_df)
 
 ```{r small_mammal_data, echo=FALSE}
 
-ggplot(small_mammal_data, aes(x = `Trap Station`, y = `Species Count`)) +
-  geom_bar(stat = "identity") +
+ggplot(unique_counts_data, aes(x = `Trap station`, y = `Captures Percentages`)) +
+  geom_bar(stat = "identity") + 
   theme_minimal() + 
-  labs(title = "Bar Plot of Species Counted per Trap Station", x = "Trap Station", y = "Species Count")
+  labs(title = "Bar Plot of Percentage of Small Mammals Captured per Trap Station", 
+       x = "Trap Station", 
+       y = "Capture Percentage")
 
-ggplot(small_mammal_data, aes(x = `Trap Station`, y = `Species Percentage`)) +
-  geom_bar(stat = "identity") +
-  theme_minimal() + 
-  labs(title = "Bar Plot of Species Percentage per Trap Station", x = "Trap Station", y = "Species Percentage")
 
 ```
 
